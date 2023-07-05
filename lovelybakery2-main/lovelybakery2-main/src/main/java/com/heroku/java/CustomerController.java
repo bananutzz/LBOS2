@@ -20,14 +20,14 @@ public class CustomerController {
     public CustomerController(DataSource dataSource) {
         this.dataSource = dataSource;
     }
-    // @GetMapping("/login")
-    // public String login() {
-    //     return "login";
+    // @GetMapping("/userlogin")
+    // public String userlogin() {
+    //     return "userlogin";
     // }
 
-    // @GetMapping("/signup")
-    // public String signup() {
-    //     return "signup";
+    // @GetMapping("/createAccCust")
+    // public String createAccCust() {
+    //     return "createAccCust";
     // }
 
     //insert cust into database
@@ -35,10 +35,10 @@ public class CustomerController {
     public String addAccount(HttpSession session, @ModelAttribute("createAccCust")Customer customer) {
     try {
       Connection connection = dataSource.getConnection();
-      String sql = "INSERT INTO customer (name, address, email,password) VALUES (?,?,?,?)";
+      String sql = "INSERT INTO customer (name, address, email, password) VALUES (?,?,?,?)";
       final var statement = connection.prepareStatement(sql);
 
-      statement.setString(1, customer.getName());
+      statement.setString(1, customer.getFullname());
       statement.setString(2, customer.getAddress());
       statement.setString(3, customer.getEmail());
       statement.setString(4, customer.getPassword());
@@ -138,7 +138,7 @@ public class CustomerController {
             final var statement = connection.prepareStatement(sql);
             // String name = customer.getName();
             // String address = customer.getAddress();
-            // String email = customer.getemail();
+            // String email = customer.getEmail();
             // String password = customer.getPassword();
 
             statement.setString(1, name);
