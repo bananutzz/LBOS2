@@ -158,9 +158,10 @@ public class CustomerController {
         } 
  
     }
-    //delete controller
-    @PostMapping("/viewAccCust")
-    public String viewAccCust(HttpSession session, Model model) {
+
+//delete Profile Customer
+@PostMapping("/deleteAccCust")
+public String deleteAccCust(HttpSession session, Model model) {
     String email = (String) session.getAttribute("email");
 
     if (email != null) {
@@ -191,5 +192,5 @@ public class CustomerController {
     // Username is null, handle accordingly (e.g., redirect to an error page)
     return "deleteError";
 }
-
 }
+
